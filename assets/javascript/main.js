@@ -58,7 +58,9 @@ for (var i = 0; i<comments.length; i++){
 }
 
 
-function getDBComments(){
+//function is created to bring database items and create html <div>
+
+function appendComments(){
     database.ref().on("child_added", function(childSnapshot){
         var dbPicture = childSnapshot.val().picture; 
         var dbName = childSnapshot.val().name;
@@ -67,13 +69,18 @@ function getDBComments(){
         var dbComment = childSnapshot.val().comment; 
         console.log(dbName,dbLastname,dbKnownFrom,dbComment); 
     });
+    //create a new <div> and <p> to hold brought information
+    var newDiv = $("<div>"); 
+    var p = $("<p>"); 
+
+    p.dbName
 
 } 
+
 
 //=================================================================================================================   
 
 
 links(); 
 pushFirebaseComment(); 
-
-getDBComments(); 
+appendComments(); 
